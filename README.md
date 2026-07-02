@@ -68,7 +68,10 @@ From PowerShell:
 Or with comma-delimited input:
 
 ```powershell
-.\affirm_spatial.exe --input "examples\AFFIRM Spatial Project\input\AFFIRM-batch-inputs-commas.txt" --output "examples\AFFIRM Spatial Project\output\AFFIRM-batch-outputs.txt" --threads 4
+.\affirm_spatial.exe `
+  --input "examples\AFFIRM Spatial Project\input\AFFIRM-batch-inputs-commas.txt" `
+  --output "examples\AFFIRM Spatial Project\output\AFFIRM-batch-outputs.txt" `
+  --threads 4 `
 ```
 
 ### macOS and Linux
