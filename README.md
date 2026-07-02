@@ -125,7 +125,7 @@ Do not rename columns in the input file. Change scenario values as needed, but k
 
 ## Model Inputs
 
-The input variables are provided in the default `input/AFFIRM-batch-inputs-tabs.txt` or `input/AFFIRM-batch-inputs-commas.txt` file. Visit [AFFIRM Lite](https://mezbahu.shinyapps.io/AFFIRM_R_version_yield_response_nitrogen/) to understand these variables better.
+The input variables are provided in the default `input/AFFIRM-batch-inputs-tabs.txt` or `input/AFFIRM-batch-inputs-commas.txt` file. Visit [AFFIRM Lite]([https://mezbahu.shinyapps.io/AFFIRM_R_version_yield_response_nitrogen/](https://www.4sanalyticsnmodelling.com/affirm-lite/)) to understand these variables better.
 
 | Input | Value type | Notes |
 | --- | --- | --- |
