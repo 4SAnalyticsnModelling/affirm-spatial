@@ -58,20 +58,20 @@ AFFIRM Spatial Project/
 From PowerShell:
 
 ```powershell
-.\affirm_spatial.exe `
-  --input "examples\AFFIRM Spatial Project\input\AFFIRM-batch-inputs-tabs.txt" `
-  --output "examples\AFFIRM Spatial Project\output\AFFIRM-batch-outputs.txt" `
-  --log "examples\AFFIRM Spatial Project\output\AFFIRM-batch-logfile.txt" `
+.\affirm_spatial.exe \
+  --input "examples\AFFIRM Spatial Project\input\AFFIRM-batch-inputs-tabs.txt" \
+  --output "examples\AFFIRM Spatial Project\output\AFFIRM-batch-outputs.txt" \
+  --log "examples\AFFIRM Spatial Project\output\AFFIRM-batch-logfile.txt" \
   --threads auto
 ```
 
 Or with comma-delimited input:
 
 ```powershell
-.\affirm_spatial.exe `
-  --input "examples\AFFIRM Spatial Project\input\AFFIRM-batch-inputs-commas.txt" `
-  --output "examples\AFFIRM Spatial Project\output\AFFIRM-batch-outputs.txt" `
-  --threads 4 `
+.\affirm_spatial.exe \
+  --input "examples\AFFIRM Spatial Project\input\AFFIRM-batch-inputs-commas.txt" \
+  --output "examples\AFFIRM Spatial Project\output\AFFIRM-batch-outputs.txt" \
+  --threads 4
 ```
 
 ### macOS and Linux
