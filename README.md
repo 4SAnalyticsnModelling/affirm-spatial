@@ -73,7 +73,7 @@ Or with comma-delimited input:
 Make the downloaded binary executable, then run it:
 
 ```bash
-chmod +x ./affirm_spatial
+chmod +x affirm_spatial
 ./affirm_spatial --input "examples/AFFIRM Spatial Project/input/AFFIRM-batch-inputs-tabs.txt" --output "examples/AFFIRM Spatial Project/output/AFFIRM-batch-outputs.txt" --log "examples/AFFIRM Spatial Project/output/AFFIRM-batch-logfile.txt" --threads auto
 ```
 
