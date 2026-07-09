@@ -59,20 +59,13 @@ AFFIRM Spatial Project/
 From PowerShell:
 
 ```powershell
-.\affirm_spatial.exe \
-  --input "examples\AFFIRM Spatial Project\input\AFFIRM-batch-inputs-tabs.txt" \
-  --output "examples\AFFIRM Spatial Project\output\AFFIRM-batch-outputs.txt" \
-  --log "examples\AFFIRM Spatial Project\output\AFFIRM-batch-logfile.txt" \
-  --threads auto
+.\affirm_spatial.exe --input "examples\AFFIRM Spatial Project\input\AFFIRM-batch-inputs-tabs.txt" --output "examples\AFFIRM Spatial Project\output\AFFIRM-batch-outputs.txt" --log "examples\AFFIRM Spatial Project\output\AFFIRM-batch-logfile.txt" --threads auto
 ```
 
 Or with comma-delimited input:
 
 ```powershell
-.\affirm_spatial.exe \
-  --input "examples\AFFIRM Spatial Project\input\AFFIRM-batch-inputs-commas.txt" \
-  --output "examples\AFFIRM Spatial Project\output\AFFIRM-batch-outputs.txt" \
-  --threads 4
+.\affirm_spatial.exe --input "examples\AFFIRM Spatial Project\input\AFFIRM-batch-inputs-commas.txt" --output "examples\AFFIRM Spatial Project\output\AFFIRM-batch-outputs.txt" --threads 4
 ```
 
 ### macOS and Linux
@@ -81,11 +74,7 @@ Make the downloaded binary executable, then run it:
 
 ```bash
 chmod +x ./affirm_spatial
-./affirm_spatial \
-  --input "examples/AFFIRM Spatial Project/input/AFFIRM-batch-inputs-tabs.txt" \
-  --output "examples/AFFIRM Spatial Project/output/AFFIRM-batch-outputs.txt" \
-  --log "examples/AFFIRM Spatial Project/output/AFFIRM-batch-logfile.txt" \
-  --threads auto
+./affirm_spatial --input "examples/AFFIRM Spatial Project/input/AFFIRM-batch-inputs-tabs.txt" --output "examples/AFFIRM Spatial Project/output/AFFIRM-batch-outputs.txt" --log "examples/AFFIRM Spatial Project/output/AFFIRM-batch-logfile.txt" --threads auto
 ```
 
 If macOS blocks the downloaded executable, remove the quarantine attribute after verifying that the file came from this repository:
