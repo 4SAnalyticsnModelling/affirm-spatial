@@ -21,7 +21,7 @@ AFFIRM has multiple public versions:
 
 ## Download
 
-Download the ZIP file for your operating system from the `v1.0.0` release:
+Download the ZIP file for your operating system from the [`v1.0.0` release](https://github.com/4SAnalyticsnModelling/affirm-spatial/releases/tag/v1.0.0):
 
 | Operating system | Processor | Download |
 | --- | --- | --- |
