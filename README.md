@@ -32,11 +32,13 @@ Download the ZIP file for your operating system from the `v1.0.0` release:
 | Linux | Intel or AMD 64-bit | [linux-x86_64.zip](https://github.com/4SAnalyticsnModelling/affirm-spatial/releases/download/v1.0.0/linux-x86_64.zip) |
 | Linux | ARM64 | [linux-aarch64.zip](https://github.com/4SAnalyticsnModelling/affirm-spatial/releases/download/v1.0.0/linux-aarch64.zip) |
 
+Example input files are available in [examples.zip](https://github.com/4SAnalyticsnModelling/affirm-spatial/releases/download/v1.0.0/examples.zip).
+
 After downloading, place the executable in your AFFIRM Spatial project folder or somewhere on your system `PATH`.
 
 ## Quick Start
 
-This repository includes a ready-to-copy example project:
+The [examples.zip](https://github.com/4SAnalyticsnModelling/affirm-spatial/releases/download/v1.0.0/examples.zip) release asset includes a ready-to-copy example project:
 
 ```text
 examples/
