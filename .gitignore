@@ -7,7 +7,8 @@ dst/
 examples/**/output/
 
 # Packaged example assets and AI agent guidance (not part of the tracked source tree)
-examples.zip
+affirm-spatial-examples.zip
+*.zip
 CLAUDE.md
 
 # OS/editor files

@@ -25,27 +25,26 @@ Download the ZIP file for your operating system from the [`v1.1.0` release](http
 
 | Operating system | Processor | Download |
 | --- | --- | --- |
-| Windows | Intel or AMD 64-bit | [windows-x86_64.zip](https://github.com/4SAnalyticsnModelling/affirm-spatial/releases/download/v1.1.0/windows-x86_64.zip) |
-| Windows | ARM64 | [windows-aarch64.zip](https://github.com/4SAnalyticsnModelling/affirm-spatial/releases/download/v1.1.0/windows-aarch64.zip) |
-| macOS | Apple Silicon | [macos-aarch64.zip](https://github.com/4SAnalyticsnModelling/affirm-spatial/releases/download/v1.1.0/macos-aarch64.zip) |
-| macOS | Intel | [macos-x86_64.zip](https://github.com/4SAnalyticsnModelling/affirm-spatial/releases/download/v1.1.0/macos-x86_64.zip) |
-| Linux | Intel or AMD 64-bit | [linux-x86_64.zip](https://github.com/4SAnalyticsnModelling/affirm-spatial/releases/download/v1.1.0/linux-x86_64.zip) |
-| Linux | ARM64 | [linux-aarch64.zip](https://github.com/4SAnalyticsnModelling/affirm-spatial/releases/download/v1.1.0/linux-aarch64.zip) |
+| Windows | Intel or AMD 64-bit | [affirm-spatial-windows-x86_64.zip](https://github.com/4SAnalyticsnModelling/affirm-spatial/releases/download/v1.1.0/affirm-spatial-windows-x86_64.zip) |
+| Windows | ARM64 | [affirm-spatial-windows-aarch64.zip](https://github.com/4SAnalyticsnModelling/affirm-spatial/releases/download/v1.1.0/affirm-spatial-windows-aarch64.zip) |
+| macOS | Apple Silicon | [affirm-spatial-macos-aarch64.zip](https://github.com/4SAnalyticsnModelling/affirm-spatial/releases/download/v1.1.0/affirm-spatial-macos-aarch64.zip) |
+| macOS | Intel | [affirm-spatial-macos-x86_64.zip](https://github.com/4SAnalyticsnModelling/affirm-spatial/releases/download/v1.1.0/affirm-spatial-macos-x86_64.zip) |
+| Linux | Intel or AMD 64-bit | [affirm-spatial-linux-x86_64.zip](https://github.com/4SAnalyticsnModelling/affirm-spatial/releases/download/v1.1.0/affirm-spatial-linux-x86_64.zip) |
+| Linux | ARM64 | [affirm-spatial-linux-aarch64.zip](https://github.com/4SAnalyticsnModelling/affirm-spatial/releases/download/v1.1.0/affirm-spatial-linux-aarch64.zip) |
 
-Example input files are available in [examples.zip](https://github.com/4SAnalyticsnModelling/affirm-spatial/releases/download/v1.1.0/examples.zip).
+Example input files are available in [affirm-spatial-examples.zip](https://github.com/4SAnalyticsnModelling/affirm-spatial/releases/download/v1.1.0/affirm-spatial-examples.zip).
 
 After downloading, place the executable in your AFFIRM Spatial project folder or somewhere on your system `PATH`.
 
 ## Quick Start
 
-The [examples.zip](https://github.com/4SAnalyticsnModelling/affirm-spatial/releases/download/v1.1.0/examples.zip) release asset includes a ready-to-copy example project:
+The [affirm-spatial-examples.zip](https://github.com/4SAnalyticsnModelling/affirm-spatial/releases/download/v1.1.0/affirm-spatial-examples.zip) release asset includes a ready-to-copy example project:
 
 ```text
-examples/
-  AFFIRM Spatial Project/
-    input/
-      AFFIRM-batch-inputs-tabs.txt
-      AFFIRM-batch-inputs-commas.txt
+AFFIRM Spatial Project/
+  input/
+    AFFIRM-batch-inputs-tabs.txt
+    AFFIRM-batch-inputs-commas.txt
 ```
 
 Create an output folder beside the input folder:
@@ -61,13 +60,13 @@ AFFIRM Spatial Project/
 From PowerShell:
 
 ```powershell
-.\affirm_spatial.exe --input "examples\AFFIRM Spatial Project\input\AFFIRM-batch-inputs-tabs.txt" --output "examples\AFFIRM Spatial Project\output\AFFIRM-batch-outputs.txt" --log "examples\AFFIRM Spatial Project\output\AFFIRM-batch-logfile.txt" --threads auto
+.\affirm_spatial.exe --input "AFFIRM Spatial Project\input\AFFIRM-batch-inputs-tabs.txt" --output "AFFIRM Spatial Project\output\AFFIRM-batch-outputs.txt" --log "AFFIRM Spatial Project\output\AFFIRM-batch-logfile.txt" --threads auto
 ```
 
 Or with comma-delimited input:
 
 ```powershell
-.\affirm_spatial.exe --input "examples\AFFIRM Spatial Project\input\AFFIRM-batch-inputs-commas.txt" --output "examples\AFFIRM Spatial Project\output\AFFIRM-batch-outputs.txt" --threads 4
+.\affirm_spatial.exe --input "AFFIRM Spatial Project\input\AFFIRM-batch-inputs-commas.txt" --output "AFFIRM Spatial Project\output\AFFIRM-batch-outputs.txt" --threads 4
 ```
 
 ### macOS and Linux
@@ -76,7 +75,7 @@ Make the downloaded binary executable, then run it:
 
 ```bash
 chmod 'u+x' affirm_spatial
-./affirm_spatial --input "examples/AFFIRM Spatial Project/input/AFFIRM-batch-inputs-tabs.txt" --output "examples/AFFIRM Spatial Project/output/AFFIRM-batch-outputs.txt" --log "examples/AFFIRM Spatial Project/output/AFFIRM-batch-logfile.txt" --threads auto
+./affirm_spatial --input "AFFIRM Spatial Project/input/AFFIRM-batch-inputs-tabs.txt" --output "AFFIRM Spatial Project/output/AFFIRM-batch-outputs.txt" --log "AFFIRM Spatial Project/output/AFFIRM-batch-logfile.txt" --threads auto
 ```
 
 If macOS blocks the downloaded executable, remove the quarantine attribute after verifying that the file came from this repository:
