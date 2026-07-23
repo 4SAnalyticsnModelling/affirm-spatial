@@ -31,7 +31,7 @@ pub fn build(b: *std.Build) void {
     for (dist_targets) |dist_target| {
         const dist_exe = addAffirmSpatialExe(b, b.resolveTargetQuery(dist_target.query), .ReleaseFast);
         const install = b.addInstallArtifact(dist_exe, .{
-            .dest_dir = .{ .override = .{ .custom = b.fmt("dist/{s}", .{dist_target.name}) } },
+            .dest_dir = .{ .override = .{ .custom = b.fmt("dst/{s}", .{dist_target.name}) } },
             .dest_sub_path = dist_target.exe_name,
             .pdb_dir = .disabled,
             .compiler_rt_dyn_lib_dir = .disabled,

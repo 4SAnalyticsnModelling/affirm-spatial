@@ -113,3 +113,70 @@ pub fn roundDigits(comptime T: type, value: T, digits: comptime_int) T {
     const factor = std.math.pow(T, 10, @as(T, @floatFromInt(digits)));
     return @round(value * factor) / factor;
 }
+
+const testing = std.testing;
+
+test "roundDigits rounds to the requested number of decimal digits" {
+    try testing.expectEqual(@as(ScienceFloat, 3.0), roundDigits(ScienceFloat, 3.14159, 0));
+    try testing.expectEqual(@as(ScienceFloat, 3.1), roundDigits(ScienceFloat, 3.14159, 1));
+    try testing.expectEqual(@as(ScienceFloat, 3.14), roundDigits(ScienceFloat, 3.14159, 2));
+}
+
+test "roundDigits handles negative values and half-way rounding" {
+    try testing.expectEqual(@as(ScienceFloat, -3.14), roundDigits(ScienceFloat, -3.14159, 2));
+    try testing.expectEqual(@as(ScienceFloat, 2.0), roundDigits(ScienceFloat, 1.5, 0));
+    try testing.expectEqual(@as(ScienceFloat, 1.0), roundDigits(ScienceFloat, 1.4999, 0));
+}
+
+test "InputScenario.deinit frees all owned slices without leaking" {
+    const allocator = testing.allocator;
+    var scenario = InputScenario{
+        .index = 1,
+        .township = 1,
+        .range = 1,
+        .meridian = 4,
+        .meridian_text = try allocator.dupe(u8, "W4"),
+        .som = try allocator.dupe(ScienceFloat, &.{2.0}),
+        .soil_texture = try allocator.dupe(Id, &.{1}),
+        .spring_soil_moisture = try allocator.dupe(Id, &.{1}),
+        .soil_ph = try allocator.dupe(ScienceFloat, &.{6.5}),
+        .soil_ec = try allocator.dupe(ScienceFloat, &.{0.2}),
+        .current_crop = 1,
+        .irrigation_flag = 1,
+        .precip = try allocator.dupe(ScienceFloat, &.{200.0}),
+        .irrigation_amount = try allocator.dupe(ScienceFloat, &.{0.0}),
+        .n_source = 6,
+        .n_time = try allocator.dupe(Id, &.{1}),
+        .n_place = try allocator.dupe(Id, &.{1}),
+        .soil_test_n = try allocator.dupe(ScienceFloat, &.{20.0}),
+        .previous_crop = 2,
+        .previous_crop_yield = try allocator.dupe(ScienceFloat, &.{10.0}),
+        .previous_crop_yield_unit = 2,
+        .residue_management = try allocator.dupe(Id, &.{1}),
+        .manure_n = try allocator.dupe(ScienceFloat, &.{0.0}),
+        .crop_price = try allocator.dupe(ScienceFloat, &.{8.0}),
+        .fertilizer_price = try allocator.dupe(ScienceFloat, &.{700.0}),
+        .investment_ratio = try allocator.dupe(ScienceFloat, &.{2.0}),
+    };
+    scenario.deinit(allocator);
+}
+
+test "InputScenarioView can be constructed with the expected shape" {
+    const view = InputScenarioView{
+        .index = 1,
+        .township = 1,
+        .range = 1,
+        .meridian_text = "W4",
+        .som = 2.0,
+        .soil_ph = 6.5,
+        .soil_ec = 0.2,
+        .soil_test_n = 20.0,
+        .previous_crop_yield = 10.0,
+        .manure_n = 0.0,
+        .crop_price = 8.0,
+        .fertilizer_price = 700.0,
+        .investment_ratio = 2.0,
+    };
+    try testing.expectEqual(@as(i64, 1), view.index);
+    try testing.expectEqualStrings("W4", view.meridian_text);
+}

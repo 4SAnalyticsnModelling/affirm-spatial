@@ -21,24 +21,24 @@ AFFIRM has multiple public versions:
 
 ## Download
 
-Download the ZIP file for your operating system from the [`v1.0.0` release](https://github.com/4SAnalyticsnModelling/affirm-spatial/releases/tag/v1.0.0):
+Download the ZIP file for your operating system from the [`v1.1.0` release](https://github.com/4SAnalyticsnModelling/affirm-spatial/releases/tag/v1.1.0):
 
 | Operating system | Processor | Download |
 | --- | --- | --- |
-| Windows | Intel or AMD 64-bit | [windows-x86_64.zip](https://github.com/4SAnalyticsnModelling/affirm-spatial/releases/download/v1.0.0/windows-x86_64.zip) |
-| Windows | ARM64 | [windows-aarch64.zip](https://github.com/4SAnalyticsnModelling/affirm-spatial/releases/download/v1.0.0/windows-aarch64.zip) |
-| macOS | Apple Silicon | [macos-aarch64.zip](https://github.com/4SAnalyticsnModelling/affirm-spatial/releases/download/v1.0.0/macos-aarch64.zip) |
-| macOS | Intel | [macos-x86_64.zip](https://github.com/4SAnalyticsnModelling/affirm-spatial/releases/download/v1.0.0/macos-x86_64.zip) |
-| Linux | Intel or AMD 64-bit | [linux-x86_64.zip](https://github.com/4SAnalyticsnModelling/affirm-spatial/releases/download/v1.0.0/linux-x86_64.zip) |
-| Linux | ARM64 | [linux-aarch64.zip](https://github.com/4SAnalyticsnModelling/affirm-spatial/releases/download/v1.0.0/linux-aarch64.zip) |
+| Windows | Intel or AMD 64-bit | [windows-x86_64.zip](https://github.com/4SAnalyticsnModelling/affirm-spatial/releases/download/v1.1.0/windows-x86_64.zip) |
+| Windows | ARM64 | [windows-aarch64.zip](https://github.com/4SAnalyticsnModelling/affirm-spatial/releases/download/v1.1.0/windows-aarch64.zip) |
+| macOS | Apple Silicon | [macos-aarch64.zip](https://github.com/4SAnalyticsnModelling/affirm-spatial/releases/download/v1.1.0/macos-aarch64.zip) |
+| macOS | Intel | [macos-x86_64.zip](https://github.com/4SAnalyticsnModelling/affirm-spatial/releases/download/v1.1.0/macos-x86_64.zip) |
+| Linux | Intel or AMD 64-bit | [linux-x86_64.zip](https://github.com/4SAnalyticsnModelling/affirm-spatial/releases/download/v1.1.0/linux-x86_64.zip) |
+| Linux | ARM64 | [linux-aarch64.zip](https://github.com/4SAnalyticsnModelling/affirm-spatial/releases/download/v1.1.0/linux-aarch64.zip) |
 
-Example input files are available in [examples.zip](https://github.com/4SAnalyticsnModelling/affirm-spatial/releases/download/v1.0.0/examples.zip).
+Example input files are available in [examples.zip](https://github.com/4SAnalyticsnModelling/affirm-spatial/releases/download/v1.1.0/examples.zip).
 
 After downloading, place the executable in your AFFIRM Spatial project folder or somewhere on your system `PATH`.
 
 ## Quick Start
 
-The [examples.zip](https://github.com/4SAnalyticsnModelling/affirm-spatial/releases/download/v1.0.0/examples.zip) release asset includes a ready-to-copy example project:
+The [examples.zip](https://github.com/4SAnalyticsnModelling/affirm-spatial/releases/download/v1.1.0/examples.zip) release asset includes a ready-to-copy example project:
 
 ```text
 examples/
@@ -469,4 +469,4 @@ Build release binaries for supported targets:
 zig build dist
 ```
 
-Generated release binaries are placed under `zig-out/dist/`. 
+Generated release binaries are placed under `zig-out/dst/`. 

@@ -129,6 +129,23 @@ pub const Coefficients = struct {
         return previous_crop_id * (max_yield_unit + 1) + yield_unit_id;
     }
 
+    /// Crop-indexed coefficient tables (crop_unit_conv_coef, phmax/phmin/b0ph/b1ph/b2ph,
+    /// b0ec/b1ec) are all allocated to the same length; checking one checks them all.
+    pub fn cropValid(self: Coefficients, crop_id: usize) bool {
+        return crop_id > 0 and crop_id < self.b0ph.len;
+    }
+
+    pub fn nSourceValid(self: Coefficients, source_id: usize) bool {
+        return source_id > 0 and source_id < self.n_source_percent_n.len;
+    }
+
+    /// True when previous_crop_id/yield_unit_id combine into an in-range index for
+    /// the b0ag/b0bg residue coefficient tables.
+    pub fn residueCoeffValid(self: Coefficients, previous_crop_id: usize, yield_unit_id: usize) bool {
+        if (previous_crop_id == 0 or yield_unit_id == 0) return false;
+        return self.residueIndex(previous_crop_id, yield_unit_id) < self.b0ag.len;
+    }
+
     fn loadNames(self: *Coefficients) !void {
         var reader = BinReader{ .data = embeddedData("names.bin") };
         const count = try reader.readU32();
@@ -302,4 +319,91 @@ fn allocOpt(allocator: std.mem.Allocator, len: usize) ![]?[]const u8 {
     const values = try allocator.alloc(?[]const u8, len);
     @memset(values, null);
     return values;
+}
+
+const testing = std.testing;
+
+fn firstPopulatedId(table: []?[]const u8) ?usize {
+    for (table, 0..) |entry, id| {
+        if (entry != null and entry.?.len > 0) return id;
+    }
+    return null;
+}
+
+test "load succeeds and deinit frees everything without leaking" {
+    var coeffs = try Coefficients.load(testing.allocator);
+    coeffs.deinit();
+}
+
+test "name returns empty string for an id past the table's length" {
+    var coeffs = try Coefficients.load(testing.allocator);
+    defer coeffs.deinit();
+    try testing.expectEqualStrings("", coeffs.name(coeffs.crop_name, coeffs.crop_name.len + 10));
+}
+
+test "name returns the loaded label for a populated id" {
+    var coeffs = try Coefficients.load(testing.allocator);
+    defer coeffs.deinit();
+    const id = firstPopulatedId(coeffs.crop_name) orelse return error.SkipZigTest;
+    const label = coeffs.name(coeffs.crop_name, id);
+    try testing.expect(label.len > 0);
+}
+
+test "at least one entry is populated in each name table" {
+    var coeffs = try Coefficients.load(testing.allocator);
+    defer coeffs.deinit();
+    inline for (.{ "crop_name", "previous_crop", "previous_crop_yld_unit", "residue_management", "soil_zone", "n_source", "n_time", "n_place", "soil_texture", "spring_moisture_condition", "irrigation_flag" }) |field| {
+        const table = @field(coeffs, field);
+        try testing.expect(firstPopulatedId(table) != null);
+    }
+}
+
+test "precipIndex is injective over small distinct township/range/meridian coordinates" {
+    var coeffs = try Coefficients.load(testing.allocator);
+    defer coeffs.deinit();
+    const a = coeffs.precipIndex(1, 1, 1);
+    const b = coeffs.precipIndex(1, 1, 2);
+    const c = coeffs.precipIndex(1, 2, 1);
+    const d = coeffs.precipIndex(2, 1, 1);
+    try testing.expect(a != b and a != c and a != d and b != c and b != d and c != d);
+}
+
+test "springMoisture returns 0.0 for an out-of-bounds coordinate" {
+    var coeffs = try Coefficients.load(testing.allocator);
+    defer coeffs.deinit();
+    try testing.expectEqual(@as(types.ScienceFloat, 0.0), coeffs.springMoisture(coeffs.spring_soil_moisture.len, coeffs.spring_soil_moisture.len));
+}
+
+test "residueIndex distinguishes distinct previous-crop/yield-unit coordinates" {
+    var coeffs = try Coefficients.load(testing.allocator);
+    defer coeffs.deinit();
+    try testing.expect(coeffs.residueIndex(1, 1) != coeffs.residueIndex(1, 2));
+    try testing.expect(coeffs.residueIndex(1, 1) != coeffs.residueIndex(2, 1));
+}
+
+test "cropValid rejects zero and out-of-range ids, accepts in-range ids" {
+    var coeffs = try Coefficients.load(testing.allocator);
+    defer coeffs.deinit();
+    try testing.expect(!coeffs.cropValid(0));
+    try testing.expect(!coeffs.cropValid(coeffs.b0ph.len));
+    try testing.expect(!coeffs.cropValid(coeffs.b0ph.len + 1000));
+    try testing.expect(coeffs.cropValid(1));
+    try testing.expect(coeffs.cropValid(coeffs.b0ph.len - 1));
+}
+
+test "nSourceValid rejects zero and out-of-range ids, accepts in-range ids" {
+    var coeffs = try Coefficients.load(testing.allocator);
+    defer coeffs.deinit();
+    try testing.expect(!coeffs.nSourceValid(0));
+    try testing.expect(!coeffs.nSourceValid(coeffs.n_source_percent_n.len));
+    try testing.expect(coeffs.nSourceValid(1));
+}
+
+test "residueCoeffValid rejects zero and out-of-range ids, accepts in-range ids" {
+    var coeffs = try Coefficients.load(testing.allocator);
+    defer coeffs.deinit();
+    try testing.expect(!coeffs.residueCoeffValid(0, 1));
+    try testing.expect(!coeffs.residueCoeffValid(1, 0));
+    try testing.expect(!coeffs.residueCoeffValid(coeffs.b0ag.len, coeffs.b0ag.len));
+    try testing.expect(coeffs.residueCoeffValid(1, 1));
 }
